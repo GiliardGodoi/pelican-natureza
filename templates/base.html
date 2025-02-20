@@ -16,9 +16,22 @@
     {% include "fragments/header.html" %}
 
     <section class="main-content">
-    {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
     </section>
 
     {% include "fragments/footer.html" %}
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var nav = document.querySelector('.site-nav');
+        window.addEventListener('scroll', function() {
+            // Define o ponto de mudança (ex: 100px)
+            if (window.scrollY > 120) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    });
+    </script>
 </html>

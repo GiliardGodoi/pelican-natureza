@@ -4,7 +4,7 @@
     <article>
         <header>
             <h2>
-                <a href="{{ SITEURL }}/{{ article.url }}#{{ article.slug }}">{{ article.title }}</a>
+                <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
             </h2>
             <p>
                 <meta itemprop="datePublished" content="{{ article.date.isoformat() }}">
@@ -18,10 +18,12 @@
 
         {% if summarise or article.metadata['summary'] or SUMMARY_MAX_LENGTH %}
             {{ article.summary }}
-            <a class="button" href="{{ SITEURL }}/{{ article.url }}#{{ article.slug }}">Continue reading</a>
+            <a class="button" href="{{ SITEURL }}/{{ article.url }}">Continue lendo...</a>
         {% else %}
             {{ article.content }}
         {% endif %}
     </article>
     {% endfor %}
+
+    {% include "pagination.html" %}
 {% endblock %}

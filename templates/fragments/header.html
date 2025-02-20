@@ -1,10 +1,15 @@
 <header class="site-header">
-    <a href="{{ SITEURL }}">
-        {% if SITELOGO %}
-        <img src="{{ SITELOGO }}" alt="{{ SITETITLE }}" title="{{ SITETITLE }}">
-        {% else %}
+    <nav class="site-nav">
+        {% if DISPLAY_PAGES_ON_MENU %}
+        <ul>
+            <li> <a href="{{ SITEURL }}">Giliard Godoi</a> </li>
+            {% for p in PAGES or pages %}
+            <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+            {% endfor %}
+        </ul>
         {% endif %}
-    </a>
+    </nav>
     <h1 itemprop="name"><a href="{{ SITEURL }}">{{ SITETITLE }}</a></h1>
     {% if SITESUBTITLE %}<p>{{ SITESUBTITLE }}</p>{% endif %}
+
 </header>
